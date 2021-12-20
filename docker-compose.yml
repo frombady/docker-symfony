@@ -14,7 +14,8 @@ services:
     restart: always
   php-fpm:
     container_name: php
-    image: php:8.1-fpm
+    build:
+      context: docker/fpm
     environment:
       TZ: "Europe/Moscow"
     volumes:
