@@ -1,6 +1,33 @@
 version: '3'
 
 services:
+  nginx:
+    container_name: nginx
+    build:
+      context: ./docker/nginx
+    env_file:
+      - .env
+    volumes:
+      - ./:/symfony
+      - ./var/log/nginx:/var/log/nginx
+    environment:
+      TZ: "${NGINX_TZ}"
+    restart: always
+    ports:
+      - "${NGINX_PORT}:80"
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    container_name: php
+    build:
+      context: docker/fpm
+    environment:
+      TZ: "${PHP_TZ}"
+    volumes:
+      - ./:/symfony:rw
+    restart: always
+
   database:
     container_name: postgres
     image: postgres:${POSTGRES_VERSION:-14.1}-alpine
@@ -11,13 +38,4 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-symfony}
     volumes:
      - ./docker/db/data:/var/lib/postgresql/data:rw
-    restart: always
-  php-fpm:
-    container_name: php
-    build:
-      context: docker/fpm
-    environment:
-      TZ: "Europe/Moscow"
-    volumes:
-      - ./:/symfony:rw
     restart: always
