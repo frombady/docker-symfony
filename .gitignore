@@ -18,3 +18,7 @@
 ###> postgresql/data ###
 /docker/db/data/
 ###< postgresql/data ###
+
+###> rabbitmq/data ###
+/docker/rabbitmq/data/
+###< rabbitmq/data ###
