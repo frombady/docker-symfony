@@ -1,6 +1,6 @@
 # docker-symfony
 
-* symfony 3.4
+* symfony 5.4
 * nginx
 * php 8.1
 * postgresql 14.1
