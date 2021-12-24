@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.1-alpine
 
 RUN apt update && apt install -y \
     libpq-dev \
