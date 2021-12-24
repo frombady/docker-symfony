@@ -22,3 +22,7 @@
 ###> rabbitmq/data ###
 /docker/rabbitmq/data/
 ###< rabbitmq/data ###
+
+###> redis/data ###
+/docker/redis/data/
+###< redis/data ###
