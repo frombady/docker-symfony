@@ -1,4 +1,4 @@
-FROM nginx:1.21.4-alpine
+FROM nginx:1.21.4
 
 RUN apt update && apt install -y \
     wget \
