@@ -38,6 +38,8 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-symfony}
     volumes:
      - ./docker/db/data:/var/lib/postgresql/data:rw
+    ports:
+      - "5432:5432"
     restart: always
 
   rabbitmq:
