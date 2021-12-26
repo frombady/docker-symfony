@@ -1,4 +1,7 @@
-FROM php:8.1
+FROM php:8.1-fpm
+
+# Set working directory
+WORKDIR /symfony
 
 RUN apt update && apt install -y \
     libpq-dev \
@@ -30,6 +33,3 @@ RUN cd /tmp && git clone https://github.com/ImageMagick/ImageMagick.git ImageMag
 RUN rm -rf /tmp/pear
 
 RUN echo "set mouse-=a" >> ~/.vimrc
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-WORKDIR /symfony

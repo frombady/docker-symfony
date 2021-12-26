@@ -22,11 +22,15 @@ services:
     container_name: php
     build:
       context: docker/fpm
+    env_file:
+      - .env
     environment:
       TZ: "${PHP_TZ}"
     volumes:
       - ./:/symfony:rw
     restart: always
+    depends_on:
+      - database
 
   database:
     container_name: postgres
