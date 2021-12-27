@@ -68,3 +68,9 @@ services:
     environment:
       - REDIS_REPLICATION_MODE=master
     restart: always
+
+  grafana:
+    image: grafana/grafana-enterprise:8.2.0
+    ports:
+      - "${GRAFANA_PORT}:3000"
+    user: '104'
