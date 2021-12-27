@@ -6,3 +6,4 @@
 * **postgresql** - 14.1
 * **rabbitmq** - 3.9.3
 * **redis** - 6.2.6
+* **grafana** - 8.2.0
