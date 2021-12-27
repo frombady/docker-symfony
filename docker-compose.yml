@@ -53,8 +53,8 @@ services:
       - ./docker/rabbitmq/data/:/var/lib/rabbitmq/
       - ./var/log/raqbbitmq/logs/:/var/log/rabbitmq/
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - "${RABBITMQ_PORT}:5672"
+      - "${RABBITMQ_ADMIN_PORT}:15672"
     restart: always
 
   redis:
