@@ -98,7 +98,7 @@ services:
       - '--web.enable-lifecycle'
     restart: unless-stopped
     expose:
-      - "9090:9090"
+      - "${PROMETHEUS_PORT}:9090"
     labels:
       org.label-schema.group: "monitoring"
 
@@ -116,7 +116,7 @@ services:
       - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
     restart: unless-stopped
     expose:
-      - 9100
+      - "${NODEEXPORTER_PORT}:9100"
     labels:
       org.label-schema.group: "monitoring"
 
@@ -125,13 +125,13 @@ services:
     container_name: cadvisor
     volumes:
       - /:/rootfs:ro
-      - /var/run:/var/run:rw
+      - /var/run:/var/run
       - /sys:/sys:ro
       - /var/lib/docker:/var/lib/docker:ro
       #- /cgroup:/cgroup:ro #doesn't work on MacOS only for Linux
     restart: always
     expose:
-      - 8081
+      - "${CV_PORT}:8081"
     labels:
       org.label-schema.group: "monitoring"
 
