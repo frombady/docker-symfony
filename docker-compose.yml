@@ -69,6 +69,20 @@ services:
       - REDIS_REPLICATION_MODE=master
     restart: always
 
+  alertmanager:
+    image: prom/alertmanager:v0.20.0
+    container_name: alertmanager
+    volumes:
+      - ./docker/alertmanager/data:/etc/alertmanager
+    command:
+      #- '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/alertmanager'
+    restart: unless-stopped
+    expose:
+      - 9093
+    labels:
+      org.label-schema.group: "monitoring"
+
   prometheus:
     image: prom/prometheus:v2.17.1
     container_name: prometheus
