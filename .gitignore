@@ -25,11 +25,3 @@
 ###> redis/data ###
 /docker/redis/data/
 ###< redis/data ###
-
-###> prometheus/data ###
-/docker/prometheus/data/
-###< prometheus/data ###
-
-###> alertmanager/data ###
-/docker/alertmanager/data/
-###< alertmanager/data ###
